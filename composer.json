@@ -1,0 +1,26 @@
+{
+  "name": "sportakal/revenuecat-v1-api-php",
+  "description": "It is a PHP package for api v1 version of Revenuecat.",
+  "type": "library",
+  "license": "Apache License",
+  "autoload": {
+    "psr-4": {
+      "Sportakal\\RevenuecatV1ApiPhp\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "sportakal",
+      "email": "portakalsinan@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "guzzlehttp/guzzle": "^7.0",
+    "nesbot/carbon": "^2.68"
+  },
+  "require-dev": {
+    "php-sage/sage": "^1.5",
+    "vlucas/phpdotenv": "^5.5"
+  }
+}
