@@ -2,7 +2,7 @@
   "name": "sportakal/revenuecat-v1-api-php",
   "description": "It is a PHP package for api v1 version of Revenuecat.",
   "type": "library",
-  "license": "Apache License",
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Sportakal\\RevenuecatV1ApiPhp\\": "src/"
