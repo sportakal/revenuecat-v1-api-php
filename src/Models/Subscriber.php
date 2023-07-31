@@ -11,9 +11,13 @@ class Subscriber extends ModelBase
     protected ?string $management_url;
     protected Carbon $first_seen;
     protected Carbon $last_seen;
+    /** @var Entitlement[] $entitlements */
     protected array $entitlements = [];
+    /** @var Subscription[] $subscriptions */
     protected array $subscriptions = [];
+    /** @var NonSubscription[] $non_subscriptions */
     protected array $non_subscriptions = [];
+    /** @var SubscriberAttribute[] $subscriber_attributes */
     protected array $subscriber_attributes = [];
     protected string $original_app_user_id;
 
