@@ -8,7 +8,7 @@ class Entitlement extends ModelBase
 {
     protected string $key;
     protected Carbon $expires_date;
-    protected Carbon $grace_period_expires_date;
+    protected ?Carbon $grace_period_expires_date;
     protected Carbon $purchase_date;
     protected string $product_identifier;
 
@@ -47,7 +47,7 @@ class Entitlement extends ModelBase
     /**
      * @param Carbon $grace_period_expires_date
      */
-    public function setGracePeriodExpiresDate(Carbon $grace_period_expires_date): void
+    public function setGracePeriodExpiresDate(?Carbon $grace_period_expires_date): void
     {
         $this->grace_period_expires_date = $grace_period_expires_date;
     }
