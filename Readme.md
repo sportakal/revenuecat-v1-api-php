@@ -3,6 +3,7 @@
 [Check official documentation (Revenuecat api v1)](https://www.revenuecat.com/reference/basic)
 
 ## Installation
+
 ### Composer
 
 Install dependencies with composer:
@@ -20,15 +21,17 @@ require_once('vendor/autoload.php');
 ## Usage
 
 ### Create Options
+
 Set you token to Options object
 
 ```php
 use Sportakal\RevenuecatV1ApiPhp\Options;
 
-$options = new Options('your_bearer_token');
+$options = new Options('your_bearer_token','your timezone (+3));
 ```
 
 ### Make Request
+
 Get or Create subscriber info from Revenuecat
 
 ```php
@@ -44,6 +47,7 @@ return $subscriber;
 Check for more examples **/samples** directory
 
 ## TODOS
+
 - [X] ***Get or Create Subscriber*** Endpoint
 - [X] ***Delete Subscriber*** Endpoint
 - [ ] ***Add User Attribution Data*** Endpoint
@@ -57,6 +61,5 @@ Check for more examples **/samples** directory
 - [ ] ***Override a Customer's Current Offering*** Endpoint
 - [ ] ***Remove a Customer's Current Offering Override*** Endpoint
 - [ ] ***Get Offerings*** Endpoint
-
 
 ## Contributions are welcome!

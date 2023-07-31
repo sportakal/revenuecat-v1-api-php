@@ -4,6 +4,7 @@ namespace Sportakal\RevenuecatV1ApiPhp\Requests;
 
 use Carbon\Carbon;
 use GuzzleHttp\Exception\GuzzleException;
+use Sportakal\RevenuecatV1ApiPhp\CarbonHelper;
 use Sportakal\RevenuecatV1ApiPhp\Models\Entitlement;
 use Sportakal\RevenuecatV1ApiPhp\Models\NonSubscription;
 use Sportakal\RevenuecatV1ApiPhp\Models\Subscriber;
@@ -38,15 +39,15 @@ class GetOrCreateSubscriber extends RequestBase
         $subscriber->setManagementUrl($subscriber_data['management_url']);
         $subscriber->setOriginalAppUserId($subscriber_data['original_app_user_id']);
         $subscriber->setOriginalApplicationVersion($subscriber_data['original_application_version']);
-        $subscriber->setOriginalPurchaseDate($subscriber_data['original_purchase_date'] ? Carbon::create($subscriber_data['original_purchase_date']) : null);
+        $subscriber->setOriginalPurchaseDate(CarbonHelper::fromString($subscriber_data['original_purchase_date'], $options->getTimezone()));
 
         foreach ($subscriber_data['entitlements'] as $key => $entitlement) {
             $_entitlement = new Entitlement();
             $_entitlement->setKey($key);
             $_entitlement->setProductIdentifier($entitlement['product_identifier']);
-            $_entitlement->setExpiresDate($entitlement['expires_date'] ? Carbon::create($entitlement['expires_date']) : null);
-            $_entitlement->setPurchaseDate($entitlement['purchase_date'] ? Carbon::create($entitlement['purchase_date']) : null);
-            $_entitlement->setGracePeriodExpiresDate($entitlement['grace_period_expires_date'] ? Carbon::create($entitlement['grace_period_expires_date']) : null);
+            $_entitlement->setExpiresDate(CarbonHelper::fromString($entitlement['expires_date'], $options->getTimezone()));
+            $_entitlement->setPurchaseDate(CarbonHelper::fromString($entitlement['purchase_date'], $options->getTimezone()));
+            $_entitlement->setGracePeriodExpiresDate(CarbonHelper::fromString($entitlement['grace_period_expires_date'], $options->getTimezone()));
 
             $subscriber->addEntitlements($_entitlement);
         }
@@ -54,18 +55,18 @@ class GetOrCreateSubscriber extends RequestBase
         foreach ($subscriber_data['subscriptions'] as $key => $subscription) {
             $_subscription = new Subscription();
             $_subscription->setKey($key);
-            $_subscription->setExpiresDate($subscription['expires_date'] ? Carbon::create($subscription['expires_date']) : null);
-            $_subscription->setPurchaseDate($subscription['purchase_date'] ? Carbon::create($subscription['purchase_date']) : null);
-            $_subscription->setOriginalPurchaseDate($subscription['original_purchase_date'] ? Carbon::create($subscription['original_purchase_date']) : null);
+            $_subscription->setExpiresDate(CarbonHelper::fromString($subscription['expires_date'], $options->getTimezone()));
+            $_subscription->setPurchaseDate(CarbonHelper::fromString($subscription['purchase_date'], $options->getTimezone()));
+            $_subscription->setOriginalPurchaseDate(CarbonHelper::fromString($subscription['original_purchase_date'], $options->getTimezone()));
             $_subscription->setOwnershipType($subscription['ownership_type']);
             $_subscription->setPeriodType($subscription['period_type']);
             $_subscription->setStore($subscription['store']);
             $_subscription->setIsSandbox($subscription['is_sandbox']);
-            $_subscription->setUnsubscribeDetectedAt($subscription['unsubscribe_detected_at'] ? Carbon::create($subscription['unsubscribe_detected_at']) : null);
-            $_subscription->setBillingIssuesDetectedAt($subscription['billing_issues_detected_at'] ? Carbon::create($subscription['billing_issues_detected_at']) : null);
-            $_subscription->setGracePeriodExpiresDate($subscription['grace_period_expires_date'] ? Carbon::create($subscription['grace_period_expires_date']) : null);
-            $_subscription->setRefundedAt($subscription['refunded_at'] ? Carbon::create($subscription['refunded_at']) : null);
-            $_subscription->setAutoResumeDate($subscription['auto_resume_date'] ? Carbon::create($subscription['auto_resume_date']) : null);
+            $_subscription->setUnsubscribeDetectedAt(CarbonHelper::fromString($subscription['unsubscribe_detected_at'], $options->getTimezone()));
+            $_subscription->setBillingIssuesDetectedAt(CarbonHelper::fromString($subscription['billing_issues_detected_at'], $options->getTimezone()));
+            $_subscription->setGracePeriodExpiresDate(CarbonHelper::fromString($subscription['grace_period_expires_date'], $options->getTimezone()));
+            $_subscription->setRefundedAt(CarbonHelper::fromString($subscription['refunded_at'], $options->getTimezone()));
+            $_subscription->setAutoResumeDate(CarbonHelper::fromString($subscription['auto_resume_date'], $options->getTimezone()));
 
             $subscriber->addSubscription($_subscription);
         }
@@ -74,7 +75,7 @@ class GetOrCreateSubscriber extends RequestBase
             $_non_subscription = new NonSubscription();
             $_non_subscription->setKey($key);
             $_non_subscription->setId($non_subscription['id']);
-            $_non_subscription->setPurchaseDate($non_subscription['purchase_date'] ? Carbon::create($non_subscription['purchase_date']) : null);
+            $_non_subscription->setPurchaseDate(CarbonHelper::fromString($non_subscription['purchase_date'], $options->getTimezone()));
             $_non_subscription->setStore($non_subscription['store']);
             $_non_subscription->setIsSandbox($non_subscription['is_sandbox']);
 
