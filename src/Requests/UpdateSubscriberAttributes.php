@@ -18,7 +18,7 @@ class UpdateSubscriberAttributes extends RequestBase
         $this->appUserId = $appUserId;
     }
 
-    public function addAttribute(string $key, string $value, int $updatedAtMs = null): self
+    public function addAttribute(string $key, string $value, ?int $updatedAtMs = null): self
     {
         $this->attributes[$key] = [
             'value' => $value,
@@ -37,7 +37,6 @@ class UpdateSubscriberAttributes extends RequestBase
             'attributes' => $this->attributes,
         ];
         $response = $request->make($endpoint, 'POST', $body);
-        saged($response);
         return $response;
     }
 }
