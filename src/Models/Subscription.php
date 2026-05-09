@@ -10,7 +10,7 @@ class Subscription extends ModelBase
     protected Carbon $expires_date;
     protected Carbon $purchase_date;
     protected Carbon $original_purchase_date;
-    protected string $ownership_type;
+    protected ?string $ownership_type = null;
     protected string $period_type;
     protected string $store;
     protected bool $is_sandbox;
@@ -88,15 +88,15 @@ class Subscription extends ModelBase
     /**
      * @return string
      */
-    public function getOwnershipType(): string
+    public function getOwnershipType(): ?string
     {
         return $this->ownership_type;
     }
 
     /**
-     * @param string $ownership_type
+     * @param string|null $ownership_type
      */
-    public function setOwnershipType(string $ownership_type): void
+    public function setOwnershipType(?string $ownership_type): void
     {
         $this->ownership_type = $ownership_type;
     }

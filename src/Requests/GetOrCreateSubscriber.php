@@ -58,7 +58,7 @@ class GetOrCreateSubscriber extends RequestBase
             $_subscription->setExpiresDate(CarbonHelper::fromString($subscription['expires_date'], $options->getTimezone()));
             $_subscription->setPurchaseDate(CarbonHelper::fromString($subscription['purchase_date'], $options->getTimezone()));
             $_subscription->setOriginalPurchaseDate(CarbonHelper::fromString($subscription['original_purchase_date'], $options->getTimezone()));
-            $_subscription->setOwnershipType($subscription['ownership_type']);
+            $_subscription->setOwnershipType($subscription['ownership_type'] ?? null);
             $_subscription->setPeriodType($subscription['period_type']);
             $_subscription->setStore($subscription['store']);
             $_subscription->setIsSandbox($subscription['is_sandbox']);
