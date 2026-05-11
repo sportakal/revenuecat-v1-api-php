@@ -45,6 +45,7 @@ class GetOrCreateSubscriber extends RequestBase
             $_entitlement = new Entitlement();
             $_entitlement->setKey($key);
             $_entitlement->setProductIdentifier($entitlement['product_identifier']);
+            $_entitlement->setProductPlanIdentifier($entitlement['product_plan_identifier'] ?? null);
             $_entitlement->setExpiresDate(CarbonHelper::fromString($entitlement['expires_date'], $options->getTimezone()));
             $_entitlement->setPurchaseDate(CarbonHelper::fromString($entitlement['purchase_date'], $options->getTimezone()));
             $_entitlement->setGracePeriodExpiresDate(CarbonHelper::fromString($entitlement['grace_period_expires_date'], $options->getTimezone()));

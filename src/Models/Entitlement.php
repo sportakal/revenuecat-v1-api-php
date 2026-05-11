@@ -11,6 +11,7 @@ class Entitlement extends ModelBase
     protected ?Carbon $grace_period_expires_date;
     protected Carbon $purchase_date;
     protected string $product_identifier;
+    protected ?string $product_plan_identifier = null;
 
     /**
      * @return string
@@ -90,6 +91,22 @@ class Entitlement extends ModelBase
     public function setProductIdentifier(string $product_identifier): void
     {
         $this->product_identifier = $product_identifier;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getProductPlanIdentifier(): ?string
+    {
+        return $this->product_plan_identifier;
+    }
+
+    /**
+     * @param string|null $product_plan_identifier
+     */
+    public function setProductPlanIdentifier(?string $product_plan_identifier): void
+    {
+        $this->product_plan_identifier = $product_plan_identifier;
     }
 
 }
